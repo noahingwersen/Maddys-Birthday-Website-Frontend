@@ -2,8 +2,11 @@ const LoginForm = () => {
   return (
     <div className="flex w-screen h-screen justify-center items-center">
       <div className="w-450px bg-green-400 p-10 rounded-lg">
+        <div className="mb-6 text-center">
+          <h1 className="text-4xl font-semibold">Sign In</h1>
+        </div>
         <form>
-          <div className="mb-6">
+          <div className="mb-4">
             <label for="emailInput" className="">
               Email address
             </label>
@@ -15,7 +18,7 @@ const LoginForm = () => {
             />
           </div>
 
-          <div className="mb-6">
+          <div className="mb-4">
             <label for="passwordInput" className="">
               Password
             </label>
@@ -26,10 +29,10 @@ const LoginForm = () => {
             />
           </div>
 
-          <div className="mb-6">
+          <div className="mb-4">
             <button
               type="button"
-              className="w-full rounded-sm bg-white px-6 py-1"
+              className="w-full rounded-md text-white bg-zinc-800 px-6 py-1"
             >
               Login
             </button>
@@ -50,11 +53,16 @@ const LoginForm = () => {
               </label>
             </div>
 
-            <a href="#!">Forgot password?</a>
+            <a href="#!" className="hover:underline">
+              Forgot password?
+            </a>
           </div>
           <div className="text-center lg:text-left">
-            <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
-              Don't have an account? <a href="#!">Register</a>
+            <p className="mb-0 mt-2 pt-1 text-sm">
+              Don't have an account?{' '}
+              <a href="#!" className="font-semibold hover:underline">
+                Register
+              </a>
             </p>
           </div>
         </form>
