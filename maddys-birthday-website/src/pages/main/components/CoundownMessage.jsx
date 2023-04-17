@@ -14,11 +14,11 @@ const CoundownMessage = () => {
         </div>
         <div>
           Want to contribute?{' '}
-          <Link className="hover:underline" to="/register">
+          <Link className="font-semibold hover:underline" to="/register">
             Register
           </Link>{' '}
           or{' '}
-          <Link className="hover:underline" to="/login">
+          <Link className="font-semibold hover:underline" to="/login">
             Login
           </Link>
         </div>

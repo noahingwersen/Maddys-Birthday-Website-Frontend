@@ -1,10 +1,8 @@
 import LoginForm from './components/LoginForm'
-import Navbar from '../../components/Navbar'
 
 const LoginPage = () => {
   return (
-    <div className="h-full">
-      <Navbar />
+    <div className="h-full flex flex-col items-center justify-center">
       <LoginForm />
     </div>
   )

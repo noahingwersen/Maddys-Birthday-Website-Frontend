@@ -1,5 +1,6 @@
 import { pb } from '../../../api/pocketBase'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false)
@@ -21,69 +22,73 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="flex h-fit justify-center items-center">
-      <div className="w-450px bg-green-400 p-10 my-14 rounded-lg">
-        <div className="mb-6 text-center">
-          <h1 className="text-4xl font-semibold">Register</h1>
-        </div>
-        <form onSubmit={submit}>
-          <div className="mb-4">
-            <label htmlFor="firstNameInput" className="">
-              First Name
-            </label>
-            <input
-              type="text"
-              className="w-full rounded"
-              id="firstNameInput"
-              name="firstName"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="lastNameInput" className="">
-              Last Name
-            </label>
-            <input
-              type="text"
-              className="w-full rounded"
-              id="lastNameInput"
-              name="lastName"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="emailInput" className="">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="w-full rounded"
-              id="emailInput"
-              placeholder="me@example.com"
-              name="email"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="passwordInput" className="">
-              Password
-            </label>
-            <input
-              type="password"
-              className="w-full rounded"
-              id="passwordInput"
-              name="password"
-            />
-          </div>
-
-          <div className="mb-4">
-            <button
-              type="submit"
-              className="w-full rounded-md text-white bg-zinc-800 px-6 py-2"
-            >
-              Register
-            </button>
-          </div>
-        </form>
+    <div className="w-450px bg-green-400 p-10 rounded-lg">
+      <div className="mb-6 text-center">
+        <h1 className="text-4xl font-semibold">Register</h1>
       </div>
+      <form onSubmit={submit}>
+        <div className="mb-4">
+          <label htmlFor="firstNameInput" className="">
+            First Name
+          </label>
+          <input
+            type="text"
+            className="w-full rounded"
+            id="firstNameInput"
+            name="firstName"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="lastNameInput" className="">
+            Last Name
+          </label>
+          <input
+            type="text"
+            className="w-full rounded"
+            id="lastNameInput"
+            name="lastName"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="emailInput" className="">
+            Email address
+          </label>
+          <input
+            type="email"
+            className="w-full rounded"
+            id="emailInput"
+            placeholder="me@example.com"
+            name="email"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="passwordInput" className="">
+            Password
+          </label>
+          <input
+            type="password"
+            className="w-full rounded"
+            id="passwordInput"
+            name="password"
+          />
+        </div>
+
+        <div className="mb-4">
+          <button
+            type="submit"
+            className="w-full rounded-md text-white bg-zinc-800 px-6 py-2"
+          >
+            Register
+          </button>
+        </div>
+        <div>
+          Already have an account?{' '}
+          <Link to="/login" className="font-semibold hover:underline">
+            Login
+          </Link>
+        </div>
+      </form>
     </div>
   )
 }
