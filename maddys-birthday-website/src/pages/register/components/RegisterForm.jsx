@@ -2,6 +2,7 @@ import { pb } from '../../../api/pocketBase'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SubmitButton from '../../../components/SubmitButton'
+import { toast } from 'react-toastify'
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false)
@@ -18,7 +19,12 @@ const RegisterForm = () => {
       name: `${e.target.firstName.value} ${e.target.lastName.value}`,
     }
 
-    await pb.collection('users').create(userData)
+    try {
+      await pb.collection('users').create(userData)
+    } catch (error) {
+      console.log(error)
+      toast.error('Unable to create account')
+    }
     setLoading(false)
   }
 
@@ -37,6 +43,7 @@ const RegisterForm = () => {
             className="w-full rounded"
             id="firstNameInput"
             name="firstName"
+            required
           />
         </div>
         <div className="mb-4">
@@ -48,6 +55,7 @@ const RegisterForm = () => {
             className="w-full rounded"
             id="lastNameInput"
             name="lastName"
+            required
           />
         </div>
         <div className="mb-4">
@@ -60,6 +68,7 @@ const RegisterForm = () => {
             id="emailInput"
             placeholder="me@example.com"
             name="email"
+            required
           />
         </div>
 
@@ -72,6 +81,7 @@ const RegisterForm = () => {
             className="w-full rounded"
             id="passwordInput"
             name="password"
+            required
           />
         </div>
 

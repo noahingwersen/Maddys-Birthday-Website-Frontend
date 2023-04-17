@@ -14,7 +14,13 @@ const LoginForm = () => {
         .collection('users')
         .authWithPassword(e.target.email.value, e.target.password.value)
     } catch (error) {
-      console.log(error)
+      let message
+      if (error.status == 400) {
+        message = 'Invalid email or password'
+      } else {
+        message = 'An unknown error has occurred'
+      }
+      toast.error(message)
     }
 
     setLoading(false)
@@ -34,6 +40,7 @@ const LoginForm = () => {
             id="emailInput"
             name="email"
             placeholder="me@example.com"
+            required
           />
         </div>
 
@@ -44,6 +51,7 @@ const LoginForm = () => {
             className="w-full rounded"
             id="passwordInput"
             name="password"
+            required
           />
         </div>
 
