@@ -9,8 +9,8 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="flex h-[calc(100vh-74px)] justify-center items-center">
-      <div className="w-450px bg-green-400 p-10 rounded-lg">
+    <div className="flex h-fit justify-center items-center">
+      <div className="w-450px bg-green-400 p-10 my-20 rounded-lg">
         <div className="mb-6 text-center">
           <h1 className="text-4xl font-semibold">Sign In</h1>
         </div>
