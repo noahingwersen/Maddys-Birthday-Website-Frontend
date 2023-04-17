@@ -1,37 +1,44 @@
+import { pb } from '../api/pocketBase'
+
 const LoginForm = () => {
+  const submit = async (e) => {
+    e.preventDefault()
+    await pb
+      .collection('users')
+      .authWithPassword(e.target.email.value, e.target.password.value)
+  }
+
   return (
     <div className="flex h-[calc(100vh-74px)] justify-center items-center">
       <div className="w-450px bg-green-400 p-10 rounded-lg">
         <div className="mb-6 text-center">
           <h1 className="text-4xl font-semibold">Sign In</h1>
         </div>
-        <form>
+        <form onSubmit={submit}>
           <div className="mb-4">
-            <label for="emailInput" className="">
-              Email address
-            </label>
+            <label htmlFor="emailInput">Email address</label>
             <input
-              type="text"
+              type="email"
               className="w-full rounded"
               id="emailInput"
+              name="email"
               placeholder="me@example.com"
             />
           </div>
 
           <div className="mb-4">
-            <label for="passwordInput" className="">
-              Password
-            </label>
+            <label htmlFor="passwordInput">Password</label>
             <input
               type="password"
               className="w-full rounded"
               id="passwordInput"
+              name="password"
             />
           </div>
 
           <div className="mb-4">
             <button
-              type="button"
+              type="submit"
               className="w-full rounded-md text-white bg-zinc-800 px-6 py-1"
             >
               Login
@@ -47,7 +54,7 @@ const LoginForm = () => {
               />
               <label
                 className="inline-block pl-[0.15rem] hover:cursor-pointer"
-                for="rememberCheck"
+                htmlFor="rememberCheck"
               >
                 Remember me
               </label>

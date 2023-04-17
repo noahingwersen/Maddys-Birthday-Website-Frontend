@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="h-full">
       <Navbar />
-      <RegisterForm />
+      <LoginForm />
     </div>
   )
 }
