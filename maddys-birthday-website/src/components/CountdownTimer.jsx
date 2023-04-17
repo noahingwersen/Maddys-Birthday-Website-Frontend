@@ -1,19 +1,16 @@
 import { useState, useEffect } from 'react'
+import { zeroPad } from '../utils/Helpers'
 
 const CountdownTimer = ({ endDate }) => {
-  const [duration, setDuration] = useState()
+  const filler = { days: '00', hours: '00', minutes: '00', seconds: '00' }
+  const [duration, setDuration] = useState(filler)
 
   const updateCountdown = () => {
     const today = new Date()
 
     let difference = endDate - today
     if (difference <= 0) {
-      setDuration({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-      })
+      setDuration(filler)
 
       return
     }
@@ -27,10 +24,10 @@ const CountdownTimer = ({ endDate }) => {
     const seconds = Math.floor(difference / 1000)
 
     setDuration({
-      days: days,
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds,
+      days: zeroPad(days, 2),
+      hours: zeroPad(hours, 2),
+      minutes: zeroPad(minutes, 2),
+      seconds: zeroPad(seconds, 2),
     })
   }
 
@@ -43,14 +40,26 @@ const CountdownTimer = ({ endDate }) => {
   }, [])
 
   return (
-    <div>
+    <>
       {duration && (
-        <p className="text-white">
-          Days: {duration.days}, Hours: {duration.hours}, Minutes:{' '}
-          {duration.minutes}, Seconds: {duration.seconds}
-        </p>
+        <div className="grid grid-cols-7 text-center">
+          <div>{duration.days}</div>
+          <div>:</div>
+          <div>{duration.hours}</div>
+          <div>:</div>
+          <div>{duration.minutes}</div>
+          <div>:</div>
+          <div>{duration.seconds}</div>
+          <div className="text-lg">Days</div>
+          <div></div>
+          <div className="text-lg">Hours</div>
+          <div></div>
+          <div className="text-lg">Minutes</div>
+          <div></div>
+          <div className="text-lg">Seconds</div>
+        </div>
       )}
-    </div>
+    </>
   )
 }
 export default CountdownTimer
