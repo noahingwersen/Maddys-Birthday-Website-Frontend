@@ -1,4 +1,4 @@
-import { pb } from '../api/pocketBase'
+import { pb } from '../../../api/pocketBase'
 
 const LoginForm = () => {
   const submit = async (e) => {

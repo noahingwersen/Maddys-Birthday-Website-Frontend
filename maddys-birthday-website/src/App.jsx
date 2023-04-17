@@ -1,13 +1,17 @@
-import LoginForm from './components/LoginForm'
-import Navbar from './components/Navbar'
-import RegisterForm from './components/RegisterForm'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import LoginPage from './pages/login/LoginPage'
+import MainPage from './pages/main/MainPage'
+import RegisterPage from './pages/register/RegisterPage'
 
 function App() {
   return (
-    <div className="h-full">
-      <Navbar />
-      <RegisterForm />
-    </div>
+    <Router>
+      <Routes>
+        <Route element={<MainPage />} path="/" exact />
+        <Route element={<RegisterPage />} path="/register" />
+        <Route element={<LoginPage />} path="/login" />
+      </Routes>
+    </Router>
   )
 }
 

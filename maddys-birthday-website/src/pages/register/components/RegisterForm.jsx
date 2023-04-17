@@ -1,7 +1,11 @@
-import { pb } from '../api/pocketBase'
+import { pb } from '../../../api/pocketBase'
+import { useState } from 'react'
 
 const RegisterForm = () => {
+  const [loading, setLoading] = useState(false)
+
   const submit = async (e) => {
+    setLoading(true)
     e.preventDefault()
 
     const userData = {
@@ -13,6 +17,7 @@ const RegisterForm = () => {
     }
 
     await pb.collection('users').create(userData)
+    setLoading(false)
   }
 
   return (
@@ -72,7 +77,7 @@ const RegisterForm = () => {
           <div className="mb-4">
             <button
               type="submit"
-              className="w-full rounded-md text-white bg-zinc-800 px-6 py-1"
+              className="w-full rounded-md text-white bg-zinc-800 px-6 py-2"
             >
               Register
             </button>
