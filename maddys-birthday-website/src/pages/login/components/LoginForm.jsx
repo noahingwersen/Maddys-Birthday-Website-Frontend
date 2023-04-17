@@ -1,12 +1,23 @@
 import { pb } from '../../../api/pocketBase'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import SubmitButton from '../../../components/SubmitButton'
+import { toast } from 'react-toastify'
 
 const LoginForm = () => {
+  const [loading, setLoading] = useState(false)
   const submit = async (e) => {
+    setLoading(true)
     e.preventDefault()
-    await pb
-      .collection('users')
-      .authWithPassword(e.target.email.value, e.target.password.value)
+    try {
+      await pb
+        .collection('users')
+        .authWithPassword(e.target.email.value, e.target.password.value)
+    } catch (error) {
+      console.log(error)
+    }
+
+    setLoading(false)
   }
 
   return (
@@ -37,12 +48,7 @@ const LoginForm = () => {
         </div>
 
         <div className="mb-4">
-          <button
-            type="submit"
-            className="w-full rounded-md text-white bg-zinc-800 px-6 py-2"
-          >
-            Login
-          </button>
+          <SubmitButton loading={loading} text="Log In" />
         </div>
 
         <div className="mb-2 flex items-center justify-between">

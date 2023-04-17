@@ -1,6 +1,7 @@
 import { pb } from '../../../api/pocketBase'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SubmitButton from '../../../components/SubmitButton'
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false)
@@ -75,12 +76,7 @@ const RegisterForm = () => {
         </div>
 
         <div className="mb-4">
-          <button
-            type="submit"
-            className="w-full rounded-md text-white bg-zinc-800 px-6 py-2"
-          >
-            Register
-          </button>
+          <SubmitButton loading={loading} text="Register" />
         </div>
         <div>
           Already have an account?{' '}
