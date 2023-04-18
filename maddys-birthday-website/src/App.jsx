@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Navbar from './components/Navbar'
 import LoginPage from './pages/login/LoginPage'
-import MainPage from './pages/main/MainPage'
+import HomePage from './pages/home/HomePage'
 import RegisterPage from './pages/register/RegisterPage'
 import ContributePage from './pages/contribute/ContributePage'
 
@@ -16,7 +16,7 @@ function App() {
         <div className="flex flex-col h-full">
           <Navbar />
           <Routes>
-            <Route element={<MainPage />} path="/" exact />
+            <Route element={<HomePage />} path="/" exact />
             <Route element={<RegisterPage />} path="/register" />
             <Route element={<LoginPage />} path="/login" />
             <Route
