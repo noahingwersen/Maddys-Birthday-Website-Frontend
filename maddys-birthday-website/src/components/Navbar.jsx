@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { pb } from '../api/pocketBase'
 import useAuth from '../hooks/useAuth'
 import ProfileIcon from './ProfileIcon'
 
