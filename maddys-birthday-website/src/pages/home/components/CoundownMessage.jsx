@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import CountdownTimer from '../../../components/CountdownTimer'
 import useAuth from '../../../hooks/useAuth'
+import HomeFooter from './HomeFooter'
 
 const CoundownMessage = () => {
   const { loggedIn } = useAuth()
@@ -33,6 +34,7 @@ const CoundownMessage = () => {
           </>
         )}
       </div>
+      <HomeFooter />
     </div>
   )
 }

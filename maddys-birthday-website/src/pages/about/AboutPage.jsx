@@ -1,4 +1,5 @@
 import About from './components/About'
+import AboutFooter from './components/AboutFooter'
 
 const AboutPage = () => {
   return (

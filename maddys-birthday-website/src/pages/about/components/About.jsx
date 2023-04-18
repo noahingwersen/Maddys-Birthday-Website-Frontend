@@ -1,6 +1,8 @@
+import AboutFooter from './AboutFooter'
+
 const About = () => {
   return (
-    <div className="max-w-xl h-fit min-w-[450px] min-h-[200px] flex flex-col p-4 outline bg-slate-400 rounded-lg">
+    <div className="max-w-xl h-fit min-w-[450px] min-h-[200px] flex flex-col px-4 pt-4 outline bg-slate-400 rounded-lg">
       <h1 className="font-bold text-2xl pb-2">About</h1>
       <p className="mb-2">
         This website is the result of nearly 100 hours of painful struggle to
@@ -19,6 +21,7 @@ const About = () => {
           click here.
         </a>
       </p>
+      <AboutFooter />
     </div>
   )
 }
