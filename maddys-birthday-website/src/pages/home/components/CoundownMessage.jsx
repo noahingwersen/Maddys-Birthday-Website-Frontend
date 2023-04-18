@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import CountdownTimer from '../../../components/CountdownTimer'
+import useAuth from '../../../hooks/useAuth'
 
 const CoundownMessage = () => {
+  const { loggedIn } = useAuth()
   const maddysBirthday = new Date('Jul 10, 2023 00:00:00.000')
   return (
     <div className="flex items-center h-full justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
@@ -14,13 +16,23 @@ const CoundownMessage = () => {
         </div>
         <div>
           Want to contribute?{' '}
-          <Link className="font-semibold hover:underline" to="/register">
-            Register
-          </Link>{' '}
-          or{' '}
-          <Link className="font-semibold hover:underline" to="/login">
-            Login
-          </Link>
+          {loggedIn ? (
+            <>
+              <Link className="font-semibold hover:underline" to="/contribute">
+                Click here
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link className="font-semibold hover:underline" to="/register">
+                Register
+              </Link>{' '}
+              or{' '}
+              <Link className="font-semibold hover:underline" to="/login">
+                Login
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
