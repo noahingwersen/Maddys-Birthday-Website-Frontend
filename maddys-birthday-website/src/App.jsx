@@ -8,6 +8,7 @@ import LoginPage from './pages/login/LoginPage'
 import HomePage from './pages/home/HomePage'
 import RegisterPage from './pages/register/RegisterPage'
 import ContributePage from './pages/contribute/ContributePage'
+import AboutPage from './pages/about/AboutPage'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route element={<HomePage />} path="/" exact />
+            <Route element={<AboutPage />} path="/about" />
             <Route element={<RegisterPage />} path="/register" />
             <Route element={<LoginPage />} path="/login" />
             <Route

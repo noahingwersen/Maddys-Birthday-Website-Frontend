@@ -1,10 +1,10 @@
-import CoundownMessage from './components/CoundownMessage'
+import About from './components/About'
 
-const HomePage = () => {
+const AboutPage = () => {
   return (
     <div className="flex items-center h-full justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-      <CoundownMessage />
+      <About />
     </div>
   )
 }
-export default HomePage
+export default AboutPage
