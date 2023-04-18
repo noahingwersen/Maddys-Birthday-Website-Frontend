@@ -1,8 +1,9 @@
 import { Navigate } from 'react-router-dom'
-import { pb } from '../api/pocketBase'
+import useAuth from '../hooks/useAuth'
 
 const PrivateRoute = ({ children }) => {
-  return pb.authStore.isValid ? children : <Navigate to="/" />
+  const { loggedIn } = useAuth()
+  return loggedIn ? children : <Navigate to="/login" />
 }
 
 export default PrivateRoute

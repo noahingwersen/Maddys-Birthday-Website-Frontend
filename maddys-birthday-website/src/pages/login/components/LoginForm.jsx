@@ -1,11 +1,13 @@
 import { pb } from '../../../api/pocketBase'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import SubmitButton from '../../../components/SubmitButton'
 import { toast } from 'react-toastify'
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+
   const submit = async (e) => {
     setLoading(true)
     e.preventDefault()
@@ -13,6 +15,7 @@ const LoginForm = () => {
       await pb
         .collection('users')
         .authWithPassword(e.target.email.value, e.target.password.value)
+      navigate('/contribute')
     } catch (error) {
       let message
       if (error.status == 400) {

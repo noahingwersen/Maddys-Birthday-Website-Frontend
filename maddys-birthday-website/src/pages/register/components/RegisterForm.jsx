@@ -1,11 +1,12 @@
 import { pb } from '../../../api/pocketBase'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import SubmitButton from '../../../components/SubmitButton'
 import { toast } from 'react-toastify'
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
   const submit = async (e) => {
     setLoading(true)
@@ -21,6 +22,8 @@ const RegisterForm = () => {
 
     try {
       await pb.collection('users').create(userData)
+      toast.success('Account created!')
+      navigate('/contribute')
     } catch (error) {
       console.log(error)
       toast.error('Unable to create account')
