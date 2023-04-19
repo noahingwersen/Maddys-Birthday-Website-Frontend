@@ -7,7 +7,7 @@ const Collection = ({ item }) => {
   const loadData = async () => {
     const results = await pb
       .collection(item.collection)
-      .getFullList({ sort: '-created' })
+      .getFullList({ sort: 'created' })
 
     setData(results)
   }
@@ -19,7 +19,7 @@ const Collection = ({ item }) => {
   return (
     <div className="h-full w-full p-4">
       <h1 className="text-3xl font-semibold">{item.title}</h1>
-      {item.collection == 'posts' && <TextCollection items={data} />}
+      {item.collection == 'messages' && <TextCollection items={data} />}
     </div>
   )
 }

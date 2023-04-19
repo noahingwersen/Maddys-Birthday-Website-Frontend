@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 const ContributePage = () => {
   const items = [
-    { title: 'Posts', collection: 'posts' },
+    { title: 'Messages', collection: 'messages' },
     { title: 'Pictures', collection: 'pictures' },
   ]
 
