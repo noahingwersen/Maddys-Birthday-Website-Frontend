@@ -1,9 +1,6 @@
-import { useState } from 'react'
 import TextRow from './TextRow'
 
 const TextCollection = ({ items }) => {
-  const [updatedTexts, setUpdatedTexts] = useState([])
-
   return (
     <table className="w-full table-auto border-separate">
       <thead>
@@ -18,15 +15,7 @@ const TextCollection = ({ items }) => {
       <tbody>
         {items &&
           items.map((value, index) => {
-            return (
-              <TextRow
-                key={index}
-                item={value}
-                updatedTexts={updatedTexts}
-                setUpdatedTexts={setUpdatedTexts}
-                index={index}
-              />
-            )
+            return <TextRow key={index} item={value} index={index} />
           })}
       </tbody>
     </table>
