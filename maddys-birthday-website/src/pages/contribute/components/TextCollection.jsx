@@ -5,7 +5,7 @@ const TextCollection = ({ items }) => {
   const [updatedTexts, setUpdatedTexts] = useState([])
 
   return (
-    <table className="p-4 w-full table-auto border-separate">
+    <table className="w-full table-auto border-separate">
       <thead>
         <tr>
           <th className="text-left p-2 border-b border-slate-600">ID</th>
