@@ -36,7 +36,7 @@ const Collection = ({ item }) => {
       <div className="p-4">
         {loading && <h1 className="text-2xl font-semibold">Loading...</h1>}
         {item.collection == 'messages' && <TextCollection items={allItems} />}
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center mt-4">
           <PlusButton onClick={addItem} />
           <button
             className="ml-4 py-2 px-3 h-[40px] bg-blue-500 hover:enabled:bg-blue-400 rounded-md text-white disabled:bg-gray-400 disabled:text-gray-600"
