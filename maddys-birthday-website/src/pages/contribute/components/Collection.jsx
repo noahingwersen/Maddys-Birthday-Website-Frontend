@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react'
 import { pb } from '../../../api/pocketBase'
 import TextCollection from './TextCollection'
+import useApiData from '../../../hooks/useApiData'
+import { toast } from 'react-toastify'
 
 const Collection = ({ item }) => {
-  const [data, setData] = useState()
-  const loadData = async () => {
-    const results = await pb
-      .collection(item.collection)
-      .getFullList({ sort: 'created' })
-
-    setData(results)
-  }
+  const [loading, data, errors] = useApiData(item.collection)
 
   useEffect(() => {
-    loadData()
-  }, [])
+    if (errors) {
+      toast.error('Unable to fetch messages')
+    }
+  }, [errors])
 
   return (
     <div className="h-full w-full p-4">
