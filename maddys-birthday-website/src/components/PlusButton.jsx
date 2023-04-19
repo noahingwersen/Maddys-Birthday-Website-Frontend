@@ -5,11 +5,7 @@ const PlusButton = ({ disabled, onClick }) => {
   const innerStyle = disabled && ' text-gray-500'
 
   return (
-    <button
-      className="w-auto h-auto mt-2"
-      disabled={disabled}
-      onClick={onClick}
-    >
+    <button className="w-auto h-auto" disabled={disabled} onClick={onClick}>
       <div className="flex-1 h-full">
         <div
           className={
