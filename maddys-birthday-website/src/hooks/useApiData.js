@@ -13,7 +13,9 @@ function useApiData(collectionName) {
         const response = await pb.collection(collectionName).getFullList()
         setData(response)
       } catch (error) {
-        setErrors(error)
+        if (!error.isAbort) {
+          setErrors(error)
+        }
       }
       setLoading(false)
     }

@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { pb } from '../../../api/pocketBase'
+import { useEffect } from 'react'
 import TextCollection from './TextCollection'
 import useApiData from '../../../hooks/useApiData'
 import { toast } from 'react-toastify'
@@ -16,6 +15,7 @@ const Collection = ({ item }) => {
   return (
     <div className="h-full w-full p-4">
       <h1 className="text-3xl font-semibold">{item.title}</h1>
+      {loading && <h1 className="text-2xl font-semibold">Loading...</h1>}
       {item.collection == 'messages' && <TextCollection items={data} />}
     </div>
   )
