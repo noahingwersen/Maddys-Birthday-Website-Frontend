@@ -1,29 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import TextCollectionContext from '../../../context/TextCollectionContext'
 
-const TextRow = ({
-  item,
-  index,
-  markChecked,
-  updatedItems,
-  setUpdatedItems,
-}) => {
+const TextRow = ({ item, index }) => {
   const [text, setText] = useState(item.text)
   const [checked, setChecked] = useState(false)
+  const { checkItem, updateItem } = useContext(TextCollectionContext)
 
   const onCheck = () => {
-    markChecked(item, !checked)
+    checkItem(item, !checked)
     setChecked(!checked)
   }
 
   useEffect(() => {
-    setUpdatedItems(
-      updatedItems.map((value) => {
-        if (value == item) {
-          value.text = text
-        }
-        return value
-      })
-    )
+    item = updateItem(item, text)
   }, [text])
 
   return (
