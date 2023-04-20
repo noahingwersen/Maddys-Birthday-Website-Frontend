@@ -1,5 +1,6 @@
 import CollectionList from './components/CollectionList'
-import TextCollection from './components/TextCollection'
+import ImageCollection from './components/collections/images/ImageCollection'
+import TextCollection from './components/collections/text/TextCollection'
 import { useState } from 'react'
 
 const ContributePage = () => {
@@ -19,6 +20,9 @@ const ContributePage = () => {
       />
       {selectedItem.type == 'text' && (
         <TextCollection collection={selectedItem} />
+      )}
+      {selectedItem.type == 'image' && (
+        <ImageCollection collection={selectedItem} />
       )}
     </div>
   )

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import TextTable from './TextTable'
-import useApiData from '../../../hooks/useApiData'
+import useApiData from '../../../../../hooks/useApiData'
 import { toast } from 'react-toastify'
-import PlusButton from '../../../components/PlusButton'
-import { pb } from '../../../api/pocketBase'
+import PlusButton from '../../../../../components/PlusButton'
+import { pb } from '../../../../../api/pocketBase'
+import ImageTable from './ImageTable'
 
-const TextCollection = ({ collection }) => {
+const ImageCollection = ({ collection }) => {
   const [loading, data, errors] = useApiData(collection.name)
   const [allItems, setAllItems] = useState([])
   const [updatedItems, setUpdatedItems] = useState([])
@@ -62,7 +62,7 @@ const TextCollection = ({ collection }) => {
 
   useEffect(() => {
     if (errors) {
-      toast.error('Unable to fetch messages')
+      toast.error(`Unable to fetch ${collection.name}`)
     }
   }, [errors])
 
@@ -103,35 +103,9 @@ const TextCollection = ({ collection }) => {
       <h1 className="text-3xl font-semibold">{collection.title}</h1>
       <div className="p-4">
         {loading && <h1 className="text-2xl font-semibold">Loading...</h1>}
-        {collection.name == 'messages' && (
-          <TextTable
-            items={allItems}
-            markChecked={markChecked}
-            updatedItems={updatedItems}
-            setUpdatedItems={setUpdatedItems}
-          />
-        )}
-        <div className="flex flex-row mt-4 w-full">
-          <PlusButton onClick={addItem} disabled={data && data.length == 0} />
-          <button
-            className="ml-4 py-2 px-3 h-[40px] bg-blue-500 hover:enabled:bg-blue-400 rounded-md text-white disabled:bg-gray-400 disabled:text-gray-600"
-            type="button"
-            disabled={updatedItems.length == 0 && removedItems.length == 0}
-            onClick={() => saveChanges(collection.name)}
-          >
-            Update
-          </button>
-          <button
-            className="ml-auto order-2 py-2 px-3 h-[40px] bg-red-500 hover:enabled:bg-red-400 rounded-md text-white disabled:bg-gray-400 disabled:text-gray-600"
-            type="button"
-            onClick={removeCheckedItems}
-            disabled={checkedItems.length == 0}
-          >
-            Remove
-          </button>
-        </div>
+        <ImageTable images={allItems} />
       </div>
     </div>
   )
 }
-export default TextCollection
+export default ImageCollection
