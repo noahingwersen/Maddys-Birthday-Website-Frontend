@@ -16,7 +16,7 @@ const TextRow = ({
   }
 
   useEffect(() => {
-    if (item in updatedItems) {
+    if (updatedItems.some((value) => value == item)) {
       setUpdatedItems(
         updatedItems.map((value) => {
           if (value == item) {

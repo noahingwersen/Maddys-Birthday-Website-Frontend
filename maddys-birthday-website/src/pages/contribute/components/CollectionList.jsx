@@ -1,6 +1,6 @@
 import CollectionListItem from './CollectionListItem'
 
-const CollectionList = ({ items, setSelected, selectedIndex }) => {
+const CollectionList = ({ items, setSelected, selectedValue }) => {
   return (
     <div className="p-2 outline h-full w-fit">
       <h1 className="text-xl font-semibold mb-3">Collections</h1>
@@ -9,8 +9,8 @@ const CollectionList = ({ items, setSelected, selectedIndex }) => {
           <CollectionListItem
             key={index}
             name={value.title}
-            onSelect={() => setSelected(index)}
-            selected={index == selectedIndex}
+            onSelect={() => setSelected(value)}
+            selected={value == selectedValue}
           />
         )
       })}
