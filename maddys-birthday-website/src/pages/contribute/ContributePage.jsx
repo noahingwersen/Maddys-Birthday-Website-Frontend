@@ -1,32 +1,23 @@
 import CollectionList from './components/CollectionList'
 import Collection from './components/Collection'
-import { useContext, useState } from 'react'
-import TextCollectionContext, {
-  TextCollectionProvider,
-} from '../../context/TextCollectionContext'
+import { useState } from 'react'
 
 const ContributePage = () => {
-  const collections = [
-    { title: 'Messages', name: 'messages', type: 'text' },
-    { title: 'Pictures', name: 'pictures', type: 'image' },
+  const items = [
+    { title: 'Messages', collection: 'messages' },
+    { title: 'Pictures', collection: 'pictures' },
   ]
+
   const [selectedItem, setSelectedItem] = useState(0)
 
   return (
     <div className="h-full bg-white flex flex-row">
       <CollectionList
-        items={collections}
+        items={items}
         setSelected={setSelectedItem}
         selectedIndex={selectedItem}
       />
-      {collections[selectedItem].type == 'text' && (
-        <TextCollectionProvider>
-          <Collection
-            collection={collections[selectedItem]}
-            context={TextCollectionContext}
-          />
-        </TextCollectionProvider>
-      )}
+      <Collection type={items[selectedItem]} />
     </div>
   )
 }
