@@ -16,14 +16,22 @@ const TextRow = ({
   }
 
   useEffect(() => {
-    setUpdatedItems(
-      updatedItems.map((value) => {
-        if (value == item) {
-          value.text = text
-        }
-        return value
-      })
-    )
+    if (item in updatedItems) {
+      setUpdatedItems(
+        updatedItems.map((value) => {
+          if (value == item) {
+            value.text = text
+          }
+          return value
+        })
+      )
+    } else {
+      if (text != item.text) {
+        item.text = text
+        setUpdatedItems([...updatedItems, item])
+      }
+    }
+    item.text = text
   }, [text])
 
   return (

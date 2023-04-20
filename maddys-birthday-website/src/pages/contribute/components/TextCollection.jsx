@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import TextRow from './TextRow'
 
 const TextCollection = ({
