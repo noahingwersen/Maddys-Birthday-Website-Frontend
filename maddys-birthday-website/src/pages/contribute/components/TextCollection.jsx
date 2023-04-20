@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import TextRow from './TextRow'
 
-const TextCollection = ({ items, markChecked }) => {
+const TextCollection = ({
+  items,
+  markChecked,
+  updatedItems,
+  setUpdatedItems,
+}) => {
   return (
     <table className="w-full table-auto">
       <thead>
@@ -23,6 +28,8 @@ const TextCollection = ({ items, markChecked }) => {
                 item={value}
                 index={index}
                 markChecked={markChecked}
+                updatedItems={updatedItems}
+                setUpdatedItems={setUpdatedItems}
               />
             )
           })}

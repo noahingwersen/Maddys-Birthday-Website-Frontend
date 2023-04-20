@@ -1,6 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const TextRow = ({ item, index, markChecked }) => {
+const TextRow = ({
+  item,
+  index,
+  markChecked,
+  updatedItems,
+  setUpdatedItems,
+}) => {
   const [text, setText] = useState(item.text)
   const [checked, setChecked] = useState(false)
 
@@ -8,6 +14,17 @@ const TextRow = ({ item, index, markChecked }) => {
     markChecked(item, !checked)
     setChecked(!checked)
   }
+
+  useEffect(() => {
+    setUpdatedItems(
+      updatedItems.map((value) => {
+        if (value == item) {
+          value.text = text
+        }
+        return value
+      })
+    )
+  }, [text])
 
   return (
     <tr>
