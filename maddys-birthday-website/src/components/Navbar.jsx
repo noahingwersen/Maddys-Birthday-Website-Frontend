@@ -91,13 +91,22 @@ const Navbar = () => {
             {loggedIn ? (
               <ProfileIcon />
             ) : (
-              <Link
-                className="bg-blue-600 text-white rounded-md px-3 py-1 hover:bg-blue-500"
-                type="button"
-                to="/login"
-              >
-                Sign In
-              </Link>
+              <>
+                <Link
+                  className="bg-blue-600 text-white rounded-md px-3 py-1 hover:bg-blue-500 mr-2"
+                  type="button"
+                  to="/login"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  className="ml-2 border-2 text-green-600 border-green-600 rounded-md px-3 py-1 hover:bg-green-600 hover:text-white"
+                  type="button"
+                  to="/register"
+                >
+                  Register
+                </Link>
+              </>
             )}
           </div>
         </div>
