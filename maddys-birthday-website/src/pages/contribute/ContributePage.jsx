@@ -17,7 +17,7 @@ const ContributePage = () => {
         setSelected={setSelectedItem}
         selectedIndex={selectedItem}
       />
-      <Collection item={items[selectedItem]} />
+      <Collection type={items[selectedItem]} />
     </div>
   )
 }

@@ -41,7 +41,7 @@ const TextRow = ({
       </td>
       <td className="border-b border-slate-600 w-2/3">
         <textarea
-          className="w-full border-none mt-2"
+          className="w-full border-none"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />

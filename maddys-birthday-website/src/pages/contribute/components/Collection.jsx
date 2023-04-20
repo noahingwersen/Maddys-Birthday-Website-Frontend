@@ -5,14 +5,15 @@ import { toast } from 'react-toastify'
 import PlusButton from '../../../components/PlusButton'
 import { pb } from '../../../api/pocketBase'
 
-const Collection = ({ item }) => {
-  const [loading, data, errors] = useApiData(item.collection)
+const Collection = ({ type }) => {
+  const [loading, data, errors] = useApiData(type.collection)
   const [allItems, setAllItems] = useState(data)
   const [updatedItems, setUpdatedItems] = useState([])
   const [checkedItems, setCheckedItems] = useState([])
   const [removedItems, setRemovedItems] = useState([])
 
   const saveChanges = async (collectionName) => {
+    let allItemsSaved = true
     for (let i in updatedItems) {
       const item = updatedItems[i]
       try {
@@ -27,9 +28,26 @@ const Collection = ({ item }) => {
         }
         setUpdatedItems(updatedItems.filter((thisItem) => thisItem != item))
       } catch (error) {
-        console.log(error)
+        allItemsSaved = false
         toast.error('Unable to update record')
       }
+    }
+
+    for (let i in removedItems) {
+      const item = removedItems[i]
+      if ('id' in item) {
+        try {
+          await pb.collection(collectionName).delete(item.id)
+        } catch (error) {
+          allItemsSaved = false
+          toast.error('Unable to remove record')
+          setAllItems([...allItems, item])
+        }
+      }
+    }
+    setRemovedItems([])
+    if (allItemsSaved) {
+      toast.success('Changes saved!')
     }
   }
 
@@ -77,10 +95,10 @@ const Collection = ({ item }) => {
 
   return (
     <div className="h-full w-full p-4">
-      <h1 className="text-3xl font-semibold">{item.title}</h1>
+      <h1 className="text-3xl font-semibold">{type.title}</h1>
       <div className="p-4">
         {loading && <h1 className="text-2xl font-semibold">Loading...</h1>}
-        {item.collection == 'messages' && (
+        {type.collection == 'messages' && (
           <TextCollection
             items={allItems}
             markChecked={markChecked}
@@ -94,7 +112,7 @@ const Collection = ({ item }) => {
             className="ml-4 py-2 px-3 h-[40px] bg-blue-500 hover:enabled:bg-blue-400 rounded-md text-white disabled:bg-gray-400 disabled:text-gray-600"
             type="button"
             disabled={updatedItems.length == 0 && removedItems.length == 0}
-            onClick={() => saveChanges(item.collection)}
+            onClick={() => saveChanges(type.collection)}
           >
             Update
           </button>
