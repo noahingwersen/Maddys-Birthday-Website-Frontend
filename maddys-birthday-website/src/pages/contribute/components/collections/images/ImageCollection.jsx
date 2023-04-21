@@ -28,6 +28,17 @@ const ImageCollection = ({ collection }) => {
     setAllItems(newData)
   }
 
+  const removeImage = async (image) => {
+    if (confirm('Are you sure you want to remove this image?')) {
+      try {
+        await pb.collection(collection.name).delete(image.id)
+        setAllItems(allItems.filter((item) => item != image))
+      } catch (error) {
+        toast.error('Unable to delete image')
+      }
+    }
+  }
+
   useEffect(() => {
     setAllItems(data)
   }, [data])
@@ -44,7 +55,7 @@ const ImageCollection = ({ collection }) => {
       <div className="p-4">
         <ImageUpload onChange={uploadImage} />
         {loading && <h1 className="text-2xl font-semibold">Loading...</h1>}
-        <ImageTable images={allItems} />
+        <ImageTable images={allItems} removeImage={removeImage} />
       </div>
     </div>
   )
