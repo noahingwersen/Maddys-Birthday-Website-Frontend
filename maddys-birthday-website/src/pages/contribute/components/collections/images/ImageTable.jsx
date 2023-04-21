@@ -5,7 +5,7 @@ const ImageTable = ({ images }) => {
     <div className="flex flex-row flex-wrap">
       {images &&
         images.map((value, index) => {
-          return <ImageCard image={value} key={index} />
+          return <ImageCard entry={value} key={index} />
         })}
     </div>
   )
