@@ -20,12 +20,12 @@ const ImageCollection = ({ collection }) => {
     try {
       await pb.collection(collection.name).create(formData)
       toast.success('Image uploaded successfully!')
+
+      const newData = await pb.collection(collection.name).getFullList()
+      setAllItems(newData)
     } catch (error) {
       toast.error('Unable to upload image')
     }
-
-    const newData = await pb.collection(collection.name).getFullList()
-    setAllItems(newData)
   }
 
   const removeImage = async (image) => {
