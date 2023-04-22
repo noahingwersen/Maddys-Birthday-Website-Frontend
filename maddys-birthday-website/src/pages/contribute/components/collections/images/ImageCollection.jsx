@@ -9,12 +9,9 @@ const ImageCollection = ({ collection }) => {
   const [loading, data, errors] = useApiData(collection.name)
   const [allItems, setAllItems] = useState([])
 
-  const uploadImage = async (e) => {
-    e.preventDefault()
-
+  const uploadImage = async (file) => {
     const formData = new FormData()
-    console.log(e.target.files[0])
-    formData.append('image', e.target.files[0])
+    formData.append('image', file)
     formData.append('user', pb.authStore.model.id)
 
     try {
@@ -53,7 +50,7 @@ const ImageCollection = ({ collection }) => {
     <div className="h-full overflow-y-scroll w-full p-4">
       <h1 className="text-3xl font-semibold">{collection.title}</h1>
       <div className="p-4">
-        <ImageUpload onChange={uploadImage} />
+        <ImageUpload uploadFile={uploadImage} />
         {loading && <h1 className="text-2xl font-semibold">Loading...</h1>}
         <ImageTable images={allItems} removeImage={removeImage} />
       </div>
