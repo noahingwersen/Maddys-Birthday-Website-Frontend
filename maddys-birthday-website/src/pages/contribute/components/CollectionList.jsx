@@ -10,7 +10,7 @@ const CollectionList = ({ items, setSelected, selectedValue }) => {
             key={index}
             name={value.title}
             onSelect={() => setSelected(value)}
-            selected={value == selectedValue}
+            selected={value.title === selectedValue.title}
           />
         )
       })}
