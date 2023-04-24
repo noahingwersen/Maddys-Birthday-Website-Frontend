@@ -3,18 +3,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import SubmitButton from '../../../components/SubmitButton'
 import { toast } from 'react-toastify'
+import useAuth from '../../../hooks/useAuth'
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const { rememberMe } = useAuth()
 
-  const submit = async (e) => {
+  const login = async (e) => {
     setLoading(true)
     e.preventDefault()
     try {
       await pb
         .collection('users')
         .authWithPassword(e.target.email.value, e.target.password.value)
+
+      rememberMe(e.target.rememberCheck.checked)
       navigate('/contribute')
     } catch (error) {
       let message
@@ -34,7 +38,7 @@ const LoginForm = () => {
       <div className="mb-6 text-center">
         <h1 className="text-4xl font-semibold">Sign In</h1>
       </div>
-      <form onSubmit={submit}>
+      <form onSubmit={login}>
         <div className="mb-4">
           <label htmlFor="emailInput">Email address</label>
           <input
@@ -43,6 +47,7 @@ const LoginForm = () => {
             id="emailInput"
             name="email"
             placeholder="me@example.com"
+            autoComplete="email"
             required
           />
         </div>
@@ -54,6 +59,7 @@ const LoginForm = () => {
             className="w-full rounded"
             id="passwordInput"
             name="password"
+            autoComplete="current-password"
             required
           />
         </div>
@@ -67,6 +73,7 @@ const LoginForm = () => {
             <input
               className="relative float-left -ml-[1.5rem] mr-[6px] mt-[0.15rem] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem]"
               type="checkbox"
+              name="rememberCheck"
               id="rememberCheck"
             />
             <label

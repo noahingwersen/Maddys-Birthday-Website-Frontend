@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { pb } from '../api/pocketBase'
 
 const AuthContext = createContext()
@@ -10,8 +10,27 @@ export const AuthProvider = ({ children }) => {
     setLoggedIn(pb.authStore.isValid)
   )
 
+  const rememberMe = (value) => {
+    if (value) {
+      localStorage.setItem('rememberMe', String(value))
+    } else {
+      localStorage.removeItem('rememberMe')
+    }
+  }
+
+  useEffect(() => {
+    const logIn = localStorage.getItem('rememberMe')
+      ? localStorage.getItem('rememberMe') === 'true'
+      : false
+
+    if (!logIn) {
+      pb.authStore.clear()
+    }
+  }, [])
+
   const contextData = {
     loggedIn: loggedIn,
+    rememberMe: rememberMe,
     removeListener: removeListener,
   }
 
