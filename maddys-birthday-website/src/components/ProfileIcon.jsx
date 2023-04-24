@@ -14,6 +14,7 @@ const ProfileIcon = () => {
           aria-expanded="false"
           aria-haspopup="true"
           onClick={() => setShowProfileMenu(!showProfileMenu)}
+          onBlur={() => setShowProfileMenu(false)}
         >
           <span className="sr-only">Open user menu</span>
           <img
