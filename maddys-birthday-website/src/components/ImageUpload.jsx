@@ -1,19 +1,4 @@
-import { useEffect, useRef } from 'react'
-
 const ImageUpload = ({ uploadFile }) => {
-  const dropArea = useRef(null)
-
-  useEffect(() => {
-    const dropInstance = dropArea.current
-    dropInstance.addEventListener('dragover', onDragEvent)
-    dropInstance.addEventListener('drop', onDropEvent)
-
-    return () => {
-      dropInstance.removeEventListener('dragover', onDragEvent)
-      dropInstance.removeEventListener('drop', onDropEvent)
-    }
-  }, [])
-
   const onFileInput = async (e) => {
     e.preventDefault()
     await uploadFile(e.target.files[0])
@@ -28,8 +13,6 @@ const ImageUpload = ({ uploadFile }) => {
     e.preventDefault()
     e.stopPropagation()
 
-    console.log('Drop fired')
-
     const { files } = e.dataTransfer
     if (files && files.length) {
       uploadFile(files[0])
@@ -39,7 +22,8 @@ const ImageUpload = ({ uploadFile }) => {
   return (
     <div
       className="mb-2 flex flex-col items-center justify-center bg-gray-200 min-h-[250px] rounded-md border-2 border-gray-500 border-dashed"
-      ref={dropArea}
+      onDragOver={onDragEvent}
+      onDrop={onDropEvent}
     >
       <label
         htmlFor="uploadImage"
