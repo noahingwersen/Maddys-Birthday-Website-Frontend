@@ -4,12 +4,13 @@ const ImageUpload = ({ uploadFile }) => {
   const dropArea = useRef(null)
 
   useEffect(() => {
-    dropArea.current.addEventListener('dragover', onDragEvent)
-    dropArea.current.addEventListener('drop', onDropEvent)
+    const dropInstance = dropArea.current
+    dropInstance.addEventListener('dragover', onDragEvent)
+    dropInstance.addEventListener('drop', onDropEvent)
 
     return () => {
-      dropArea.current.removeEventListener('dragover', onDragEvent)
-      dropArea.current.removeEventListener('drop', onDropEvent)
+      dropInstance.removeEventListener('dragover', onDragEvent)
+      dropInstance.removeEventListener('drop', onDropEvent)
     }
   }, [])
 
@@ -26,6 +27,8 @@ const ImageUpload = ({ uploadFile }) => {
   const onDropEvent = (e) => {
     e.preventDefault()
     e.stopPropagation()
+
+    console.log('Drop fired')
 
     const { files } = e.dataTransfer
     if (files && files.length) {
