@@ -110,7 +110,7 @@ const TextCollection = ({ collection }) => {
           setUpdatedItems={setUpdatedItems}
         />
         <div className="flex flex-row mt-4 w-full">
-          <PlusButton onClick={addItem} disabled={data && data.length == 0} />
+          <PlusButton onClick={addItem} />
           <button
             className="ml-4 py-2 px-3 h-[40px] bg-blue-500 hover:enabled:bg-blue-400 rounded-md text-white disabled:bg-gray-400 disabled:text-gray-600"
             type="button"

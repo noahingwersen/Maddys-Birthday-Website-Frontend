@@ -52,6 +52,7 @@ const TextRow = ({
           className="w-full border-none"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          placeholder="Add a message!"
         />
       </td>
       <td className="align-text-top p-2 border-b border-slate-600">
