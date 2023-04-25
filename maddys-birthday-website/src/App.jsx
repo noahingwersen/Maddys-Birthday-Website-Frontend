@@ -9,6 +9,7 @@ import HomePage from './pages/home/HomePage'
 import RegisterPage from './pages/register/RegisterPage'
 import ContributePage from './pages/contribute/ContributePage'
 import AboutPage from './pages/about/AboutPage'
+import ProfilePage from './pages/profile/ProfilePage'
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
             <Route
               element={<PrivateRoute children={<ContributePage />} />}
               path="/contribute"
+            />
+            <Route
+              element={<PrivateRoute children={<ProfilePage />} />}
+              path="/profile"
             />
           </Routes>
           <ToastContainer
