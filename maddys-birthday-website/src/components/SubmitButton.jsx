@@ -1,15 +1,15 @@
-const SubmitButton = ({ loading, text }) => {
+const SubmitButton = ({ loading, disabled, text, className }) => {
   return (
     <button
       type="submit"
-      className="w-full rounded-md text-white bg-zinc-800 hover:bg-zinc-700 px-6 py-2 disabled:bg-zinc-700"
-      disabled={loading}
+      className={`w-full rounded-md  py-1 px-3 ${className}`}
+      disabled={disabled}
     >
       {!loading ? (
         <>{text}</>
       ) : (
         <svg
-          className="animate-spin h-5 w-5 text-white m-auto"
+          className="animate-spin h-6 w-6 text-white m-auto"
           fill="none"
           viewBox="0 0 24 24"
         >

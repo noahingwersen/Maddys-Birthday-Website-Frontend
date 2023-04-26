@@ -65,7 +65,12 @@ const LoginForm = () => {
         </div>
 
         <div className="mb-4">
-          <SubmitButton loading={loading} text="Log In" />
+          <SubmitButton
+            loading={loading}
+            text="Log In"
+            disabled={loading}
+            className="text-white bg-zinc-800 hover:bg-zinc-700 px-6 py-2 disabled:bg-zinc-700"
+          />
         </div>
 
         <div className="mb-2 flex items-center justify-between">

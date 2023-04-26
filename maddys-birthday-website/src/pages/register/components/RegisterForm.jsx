@@ -89,7 +89,12 @@ const RegisterForm = () => {
         </div>
 
         <div className="mb-4">
-          <SubmitButton loading={loading} text="Register" />
+          <SubmitButton
+            loading={loading}
+            disabled={loading}
+            className="text-white bg-zinc-800 hover:bg-zinc-700 px-6 py-2 disabled:bg-zinc-700"
+            text="Register"
+          />
         </div>
         <div>
           Already have an account?{' '}
