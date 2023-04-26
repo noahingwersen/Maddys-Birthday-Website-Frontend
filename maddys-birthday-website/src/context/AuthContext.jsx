@@ -6,9 +6,11 @@ export default AuthContext
 
 export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(pb.authStore.isValid)
-  const removeListener = pb.authStore.onChange(() =>
+  const [user, setUser] = useState(pb.authStore.model)
+  const removeListener = pb.authStore.onChange(() => {
     setLoggedIn(pb.authStore.isValid)
-  )
+    setUser(pb.authStore.model)
+  })
 
   const rememberMe = (value) => {
     if (value) {
@@ -30,6 +32,7 @@ export const AuthProvider = ({ children }) => {
 
   const contextData = {
     loggedIn: loggedIn,
+    user: user,
     rememberMe: rememberMe,
     removeListener: removeListener,
   }
