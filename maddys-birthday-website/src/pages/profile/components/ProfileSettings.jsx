@@ -11,7 +11,7 @@ const ProfileSettings = () => {
   const update = async (e) => {}
 
   return (
-    <div className="flex flex-col items-center border-2 p-3 border-gray-400">
+    <div className="flex flex-col items-center p-3">
       <label forHtml="imageUpload" className="hover:cursor-pointer">
         <img
           className="h-40 w-40 mb-2 rounded-full"
