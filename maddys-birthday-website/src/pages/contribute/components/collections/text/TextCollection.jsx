@@ -99,7 +99,7 @@ const TextCollection = ({ collection }) => {
   }
 
   return (
-    <div className="h-full overflow-y-scroll w-full p-4">
+    <div className="h-full w-full p-4 overflow-y-scroll">
       <h1 className="text-3xl font-semibold">{collection.title}</h1>
       <div className="p-4">
         {loading && <h1 className="text-2xl font-semibold">Loading...</h1>}
