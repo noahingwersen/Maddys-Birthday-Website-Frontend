@@ -103,7 +103,7 @@ const Navbar = () => {
                   Sign In
                 </Link>
                 <Link
-                  className="ml-2 border-2 text-green-600 border-green-600 rounded-md px-3 py-1 hover:bg-green-600 hover:text-white"
+                  className="ml-2 border-2 text-green-600 border-green-600 rounded-md px-3 py-1 hover:bg-green-600 hover:text-white hidden sm:block"
                   type="button"
                   to="/register"
                 >

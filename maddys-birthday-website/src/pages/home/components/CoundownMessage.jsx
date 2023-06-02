@@ -7,11 +7,11 @@ const CoundownMessage = () => {
   const { loggedIn } = useAuth()
   const maddysBirthday = new Date('2023-07-10T00:00:00.000')
   return (
-    <div className="max-w-xl h-fit flex flex-col items-center justify-center p-2 outline bg-slate-400 rounded-lg">
-      <h1 className="text-5xl p-4 text-center">
+    <div className="w-full h-full sm:h-fit sm:max-w-xl flex flex-col items-center justify-center sm:p-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 sm:rounded-lg">
+      <h1 className="text-5xl font-semibold p-4 text-center">
         Countdown to Maddy's Birthday!
       </h1>
-      <div className="text-pink-700 font-bold text-6xl my-4">
+      <div className="bg-pink-200 outline rounded-md p-2 text-out font-bold text-6xl sm:text-6xl my-4 mx-2 w-auto">
         <CountdownTimer endDate={maddysBirthday} />
       </div>
       <div>
