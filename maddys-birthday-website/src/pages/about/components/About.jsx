@@ -1,17 +1,28 @@
+import { Link } from 'react-router-dom'
 import AboutFooter from './AboutFooter'
 
 const About = () => {
   return (
-    <div className="max-w-xl h-fit min-w-[450px] min-h-[200px] flex flex-col px-4 pt-4 outline bg-slate-400 rounded-lg">
+    <div className="w-full h-full sm:max-w-xl sm:h-fit flex flex-col px-4 pt-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 sm:rounded-lg">
       <h1 className="font-bold text-2xl pb-2">About</h1>
       <p className="mb-2">
-        This website is the result of nearly 100 hours of painful struggle to
-        learn and apply web development. The frontend is built with ReactJS, the
-        backend is powered by PocketBase and I used Tailwind for the CSS
-        styling. <p className="font-bold">Happy birthday Maddy!</p>
+        For Maddy's birthday this year, I wanted to apply my incredibly inept web development skills to make a website that Maddy's friends and family can upload birthday messages and fun memories to, then share them with Maddy on her birthday! 
       </p>
+      <p className="font-semibold mb-1">How does it work?</p>
+      <p className="mb-1">
+        - First, create an account. I don't use your information for anything malicous, pinky promise.
+      </p>
+      <p className="mb-1">
+        - Next, go to the <Link className="italic hover:underline" to="/contribute">Contribute</Link> page. Here you can upload messages, pictures or videos that only Maddy will see on her birthday
+      </p>
+      <p className="mb-3">
+        - On Maddy's birthday, she'll log into the website and have a scrolling page of everything you and other have submitted! :)
+      </p>
+      <p className="font-bold mb-2">
+          Happy birthday Maddy!
+        </p>
       <p>
-        If you want to see the source code,{' '}
+        If you want to see the website's source code,{' '}
         <a
           className="font-semibold hover:underline"
           target="_blank"
