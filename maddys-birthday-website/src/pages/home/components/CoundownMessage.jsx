@@ -5,7 +5,7 @@ import HomeFooter from './HomeFooter'
 
 const CoundownMessage = () => {
   const { loggedIn } = useAuth()
-  const maddysBirthday = new Date('Jul 10, 2023 00:00:00.000')
+  const maddysBirthday = new Date('2023-07-10T00:00:00.000')
   return (
     <div className="max-w-xl h-fit flex flex-col items-center justify-center p-2 outline bg-slate-400 rounded-lg">
       <h1 className="text-5xl p-4 text-center">
