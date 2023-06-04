@@ -1,3 +1,5 @@
 import PocketBase from 'pocketbase'
 
-export const pb = new PocketBase('http://184.89.38.54/')
+export const pb = new PocketBase(
+  'https://m-and-n.duckdns.org/maddys-birthday-backend/'
+)
