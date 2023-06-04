@@ -7,7 +7,7 @@ const CoundownMessage = () => {
   const { loggedIn } = useAuth()
   const maddysBirthday = new Date('2023-07-10T00:00:00.000')
   return (
-    <div className="w-full h-full sm:h-fit sm:max-w-xl flex flex-col items-center justify-center sm:p-2 bg-blue-400 sm:rounded-lg">
+    <div className="w-full h-full sm:h-fit sm:max-w-xl outline-1 sm:outline flex flex-col items-center justify-center sm:p-2 bg-blue-400 sm:rounded-lg">
       <h1 className="text-5xl font-semibold p-4 text-center">
         Countdown to Maddy's Birthday!
       </h1>

@@ -32,7 +32,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="w-full h-full sm:w-auto sm:h-auto bg-blue-400 p-10 sm:rounded-lg">
+    <div className="w-full h-full sm:w-auto sm:h-auto outline-1 sm:outline bg-blue-400 p-10 sm:rounded-lg">
       <div className="mb-6 text-center">
         <h1 className="text-4xl font-semibold">Register</h1>
       </div>
