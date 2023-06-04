@@ -3,7 +3,7 @@ import AboutFooter from './AboutFooter'
 
 const About = () => {
   return (
-    <div className="w-full h-full sm:max-w-xl sm:h-fit flex flex-col px-4 pt-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 sm:rounded-lg">
+    <div className="w-full h-full sm:max-w-xl sm:h-fit flex flex-col px-4 pt-4 bg-blue-400 sm:rounded-lg">
       <h1 className="font-bold text-2xl pb-2">About</h1>
       <p className="mb-2">
         For Maddy's birthday this year, I wanted to apply my incredibly inept web development skills to make a website that Maddy's friends and family can upload birthday messages and fun memories to, then share them with Maddy on her birthday! 
@@ -16,7 +16,7 @@ const About = () => {
         - Next, go to the <Link className="italic hover:underline" to="/contribute">Contribute</Link> page. Here you can upload messages, pictures or videos that only Maddy will see on her birthday
       </p>
       <p className="mb-3">
-        - On Maddy's birthday, she'll log into the website and have a scrolling page of everything you and other have submitted! :)
+        - On Maddy's birthday, she'll log into the website and have a scrolling page of everything you and others have submitted! :)
       </p>
       <p className="font-bold mb-2">
           Happy birthday Maddy!

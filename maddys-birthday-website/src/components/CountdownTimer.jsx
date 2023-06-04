@@ -39,7 +39,7 @@ const CountdownTimer = ({ endDate }) => {
   }, [])
 
   return (
-    <>
+    <div className="m-2">
       {duration && (
         <div className="grid grid-cols-7 text-center">
           <div>{duration.days}</div>
@@ -58,7 +58,7 @@ const CountdownTimer = ({ endDate }) => {
           <div className="text-lg">Seconds</div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 export default CountdownTimer
