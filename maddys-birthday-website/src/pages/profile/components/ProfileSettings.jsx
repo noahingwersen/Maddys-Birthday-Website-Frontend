@@ -1,36 +1,56 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { pb } from '../../../api/pocketBase'
 import useAuth from '../../../hooks/useAuth'
 import SubmitButton from '../../../components/SubmitButton'
 
 const ProfileSettings = () => {
-  const { user } = useAuth()
+  const { user, setUser } = useAuth()
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
+  const [avatar, setAvatar] = useState(pb.getFileUrl(user, user.avatar))
   const [loading, setLoading] = useState(false)
+  const avatarImage = useRef(null)
 
-  const changed = name !== user.name || email !== user.email
+  const changed = name !== user.name || email !== user.email || avatar !== pb.getFileUrl(user, user.avatar)
+
+  const updateAvatar = (e) => {
+    if (e.target.files[0]) {
+      avatarImage.current = e.target.files[0]
+      setAvatar(URL.createObjectURL(e.target.files[0]))
+    }
+  }
+
+  useEffect(() => {
+    setAvatar(pb.getFileUrl(user, user.avatar))
+  
+  }, [user])
+  
 
   const update = async (e) => {
     setLoading(true)
     e.preventDefault()
-    const data = {
-      name: name,
-      email: email,
-    }
+    const form = new FormData()
+    form.append('avatar', avatarImage.current)
+    form.append('name', name)
+    form.append('email', email)
 
-    await pb.collection('users').update(user.id, data)
+    const updatedUser = await pb.collection('users').update(user.id, form)
+    setUser(updatedUser)
+    
     setLoading(false)
   }
 
   return (
     <div className="flex flex-col items-center p-3">
       <label htmlFor="imageUpload" className="hover:cursor-pointer">
+        <div className="absolute w-40 h-40 rounded-full bg-black transition-opacity ease-in duration-450 opacity-0 hover:opacity-50">
+          <h3 className="text-center relative top-[50%] font-semibold text-white">Click to Edit</h3>
+        </div>
         <img
           className="h-40 w-40 mb-2 rounded-full"
-          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          src={avatar}
         />
-        <input type="file" id="imageUpload" hidden />
+        <input accept="image/*" type="file" id="imageUpload" onChange={updateAvatar} hidden />
       </label>
       <form onSubmit={update}>
         <div className="flex flex-col mt-2">

@@ -7,6 +7,7 @@ export default AuthContext
 export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(pb.authStore.isValid)
   const [user, setUser] = useState(pb.authStore.model)
+
   const removeListener = pb.authStore.onChange(() => {
     setLoggedIn(pb.authStore.isValid)
     setUser(pb.authStore.model)
@@ -33,6 +34,7 @@ export const AuthProvider = ({ children }) => {
   const contextData = {
     loggedIn: loggedIn,
     user: user,
+    setUser: setUser,
     rememberMe: rememberMe,
     removeListener: removeListener,
   }
