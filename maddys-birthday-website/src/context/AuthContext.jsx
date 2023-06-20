@@ -7,6 +7,7 @@ export default AuthContext
 export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(pb.authStore.isValid)
   const [user, setUser] = useState(pb.authStore.model)
+  const [avatar, setAvatar] = useState("")
 
   const removeListener = pb.authStore.onChange(() => {
     setLoggedIn(pb.authStore.isValid)
@@ -22,6 +23,17 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    let avatarURL
+    if (user && user.avatar) {
+      avatarURL = pb.getFileUrl(user, user.avatar)
+    } else {
+      avatarURL = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    }
+
+    setAvatar(avatarURL)
+  }, [user])
+
+  useEffect(() => {
     const logIn = localStorage.getItem('rememberMe')
       ? localStorage.getItem('rememberMe') === 'true'
       : false
@@ -34,6 +46,8 @@ export const AuthProvider = ({ children }) => {
   const contextData = {
     loggedIn: loggedIn,
     user: user,
+    avatar: avatar,
+    setAvatar: setAvatar,
     setUser: setUser,
     rememberMe: rememberMe,
     removeListener: removeListener,

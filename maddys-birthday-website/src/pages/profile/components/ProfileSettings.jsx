@@ -4,10 +4,9 @@ import useAuth from '../../../hooks/useAuth'
 import SubmitButton from '../../../components/SubmitButton'
 
 const ProfileSettings = () => {
-  const { user, setUser } = useAuth()
+  const { user, setUser, avatar, setAvatar } = useAuth()
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
-  const [avatar, setAvatar] = useState(pb.getFileUrl(user, user.avatar))
   const [loading, setLoading] = useState(false)
   const avatarImage = useRef(null)
 
@@ -19,13 +18,7 @@ const ProfileSettings = () => {
       setAvatar(URL.createObjectURL(e.target.files[0]))
     }
   }
-
-  useEffect(() => {
-    setAvatar(pb.getFileUrl(user, user.avatar))
   
-  }, [user])
-  
-
   const update = async (e) => {
     setLoading(true)
     e.preventDefault()
