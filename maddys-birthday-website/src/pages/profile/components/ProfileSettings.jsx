@@ -41,19 +41,21 @@ const ProfileSettings = () => {
   }
 
   return (
-    <div className="flex flex-col items-center p-3">
-      <label htmlFor="imageUpload" className="hover:cursor-pointer">
-        <div className="absolute w-40 h-40 rounded-full bg-black transition-opacity ease-in duration-450 opacity-0 hover:opacity-50">
-          <h3 className="text-center relative top-[50%] font-semibold text-white">Click to Edit</h3>
-        </div>
-        <img
-          className="h-40 w-40 mb-2 rounded-full"
-          src={avatar}
-        />
-        <input accept="image/*" type="file" id="imageUpload" onChange={updateAvatar} hidden />
-      </label>
+    <div className="flex flex-col p-3 w-full">
+      <div className="flex flex-col items-center">
+        <label htmlFor="imageUpload" className="hover:cursor-pointer">
+          <div className="absolute items-center h-40 w-40 rounded-full bg-black transition-opacity ease-in duration-450 opacity-0 hover:opacity-50">
+            <h3 className="text-center relative top-[50%] font-semibold text-white">Click to Edit</h3>
+          </div>
+          <img
+            className="h-40 w-40mb-2 rounded-full bg-white"
+            src={avatar}
+          />
+          <input accept="image/*" type="file" id="imageUpload" onChange={updateAvatar} hidden />
+        </label>
+      </div>
       <form onSubmit={update}>
-        <div className="flex flex-col mt-2">
+        <div className="flex flex-col mt-2 w-full">
           <label htmlFor="fullName">Name</label>
           <input
             id="fullName"
@@ -76,7 +78,7 @@ const ProfileSettings = () => {
         <SubmitButton
           disabled={!changed || loading}
           loading={loading}
-          className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white disabled:border-none disabled:bg-gray-400 disabled:text-white"
+          className="bg-green-600 hover:bg-green-500 text-white disabled:border-none disabled:bg-gray-300 disabled:text-gray-600"
           text="Update"
         />
       </form>

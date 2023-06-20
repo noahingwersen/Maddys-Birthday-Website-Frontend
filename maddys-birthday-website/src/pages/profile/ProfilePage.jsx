@@ -3,8 +3,8 @@ import ProfileStats from './components/ProfileStats'
 
 const ProfilePage = () => {
   return (
-    <div className="bg-white w-full h-full flex flex-row">
-      <div className="flex flex-row h-full w-fit">
+    <div className="w-full h-full flex flex-row justify-center items-center">
+      <div className="bg-blue-400 flex flex-col h-full w-full sm:h-fit sm:w-fit sm:rounded-lg sm:outline p-2 overflow-y-auto">
         <ProfileSettings />
         <ProfileStats />
       </div>
