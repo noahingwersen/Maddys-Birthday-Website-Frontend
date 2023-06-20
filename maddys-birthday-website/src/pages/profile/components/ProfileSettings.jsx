@@ -41,7 +41,7 @@ const ProfileSettings = () => {
             <h3 className="text-center relative top-[50%] font-semibold text-white">Click to Edit</h3>
           </div>
           <img
-            className="h-40 w-40mb-2 rounded-full bg-white"
+            className="h-40 w-40 mb-2 object-cover rounded-full bg-white"
             src={avatar}
           />
           <input accept="image/*" type="file" id="imageUpload" onChange={updateAvatar} hidden />

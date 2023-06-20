@@ -27,7 +27,7 @@ const ProfileIcon = () => {
       >
         <span className="sr-only">Open user menu</span>
         <img
-          className="h-8 w-8 rounded-full"
+          className="h-8 w-8 rounded-full object-cover"
           src={avatar}
         />
       </button>
