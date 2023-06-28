@@ -99,9 +99,9 @@ const TextCollection = ({ collection }) => {
   }
 
   return (
-    <div className="h-full w-full p-4 overflow-y-scroll">
+    <div className="h-full w-full p-4 overflow-y-auto">
       <h1 className="text-3xl font-semibold">{collection.title}</h1>
-      <div className="p-4">
+      <div className="p-4 min-w-[450px]">
         {loading && <h1 className="text-2xl font-semibold">Loading...</h1>}
         <TextTable
           items={allItems}

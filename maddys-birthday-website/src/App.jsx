@@ -10,6 +10,7 @@ import RegisterPage from './pages/register/RegisterPage'
 import ContributePage from './pages/contribute/ContributePage'
 import AboutPage from './pages/about/AboutPage'
 import ProfilePage from './pages/profile/ProfilePage'
+import NotFound from './components/NotFound'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <div className="flex flex-col h-full">
           <Navbar />
           <Routes>
+            <Route element={<NotFound />} path="*"/>
             <Route element={<HomePage />} path="/" exact />
             <Route element={<AboutPage />} path="/about" />
             <Route element={<RegisterPage />} path="/register" />
