@@ -89,9 +89,9 @@ const LoginForm = () => {
             </label>
           </div>
 
-          <a href="#!" className="hover:underline">
+          <Link className="hover:underline" onClick={() => alert("Oops! I haven't figured out how to do this yet. Reach out to me directly if you want to change your password")}>
             Forgot password?
-          </a>
+          </Link>
         </div>
         <div className="text-center lg:text-left">
           <p className="mb-0 mt-2 pt-1">
