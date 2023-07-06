@@ -47,7 +47,7 @@ const ProfileIcon = () => {
           tabIndex="-1"
           id="user-menu-item-0"
         >
-          Your Profile
+          My Profile
         </Link>
         <Link
           to="/"
