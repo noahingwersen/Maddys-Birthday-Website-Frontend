@@ -49,6 +49,7 @@ const ImageUpload = ({ uploadFile }) => {
         className="hidden"
         type="file"
         id="uploadImage"
+        accept=".jpg,.jpeg,.png,.svg,.gif,.webp"
         onChange={onFileInput}
       />
     </label>
