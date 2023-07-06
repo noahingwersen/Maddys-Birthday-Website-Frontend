@@ -85,6 +85,8 @@ const RegisterForm = () => {
             id="passwordInput"
             name="password"
             required
+            minLength={8}
+            maxLength={72}
           />
         </div>
 
