@@ -19,7 +19,12 @@ const LoginForm = () => {
         .authWithPassword(e.target.email.value, e.target.password.value)
 
       rememberMe(e.target.rememberCheck.checked)
-      navigate('/contribute')
+
+      if (pb.authStore.model.super) {
+        navigate('/feed')
+      } else {
+        navigate('/contribute')
+      }
     } catch (error) {
       let message
       if (error.status == 400) {
