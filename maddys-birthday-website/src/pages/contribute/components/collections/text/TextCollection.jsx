@@ -53,7 +53,7 @@ const TextCollection = ({ collection }) => {
     }
 
     try {
-      const updatedData = await pb.collection(collection.name).getFullList()
+      const updatedData = await pb.collection(collection.name).getFullList({filter: `user='${user.id}'`})
       setAllItems(updatedData)
     } catch {}
   }
