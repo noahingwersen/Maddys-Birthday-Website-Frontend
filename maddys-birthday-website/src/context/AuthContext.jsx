@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  useEffect(() => {
+  const getAvatarURL = () => {
     let avatarURL
     if (user && user.avatar) {
       avatarURL = pb.getFileUrl(user, user.avatar)
@@ -30,7 +30,11 @@ export const AuthProvider = ({ children }) => {
       avatarURL = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
     }
 
-    setAvatar(avatarURL)
+    return avatarURL
+  }
+
+  useEffect(() => {
+    setAvatar(getAvatarURL())
   }, [user])
 
   useEffect(() => {
@@ -48,6 +52,7 @@ export const AuthProvider = ({ children }) => {
     user: user,
     avatar: avatar,
     setAvatar: setAvatar,
+    getAvatarURL: getAvatarURL,
     setUser: setUser,
     rememberMe: rememberMe,
     removeListener: removeListener,

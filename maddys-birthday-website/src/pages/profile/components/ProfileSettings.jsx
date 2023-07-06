@@ -2,15 +2,16 @@ import { useState, useEffect, useRef } from 'react'
 import { pb } from '../../../api/pocketBase'
 import useAuth from '../../../hooks/useAuth'
 import SubmitButton from '../../../components/SubmitButton'
+import { toast } from 'react-toastify'
 
 const ProfileSettings = () => {
-  const { user, setUser, avatar, setAvatar } = useAuth()
+  const { user, setUser, avatar, setAvatar, getAvatarURL } = useAuth()
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
   const [loading, setLoading] = useState(false)
   const avatarImage = useRef(null)
 
-  const changed = name !== user.name || email !== user.email || avatar !== pb.getFileUrl(user, user.avatar)
+  const changed = name !== user.name || email !== user.email || avatar !== getAvatarURL()
 
   const updateAvatar = (e) => {
     if (e.target.files[0]) {
@@ -22,13 +23,20 @@ const ProfileSettings = () => {
   const update = async (e) => {
     setLoading(true)
     e.preventDefault()
-    const form = new FormData()
-    form.append('avatar', avatarImage.current)
-    form.append('name', name)
-    form.append('email', email)
 
-    const updatedUser = await pb.collection('users').update(user.id, form)
-    setUser(updatedUser)
+    try {
+      const form = new FormData()
+      form.append('avatar', avatarImage.current)
+      form.append('name', name)
+      form.append('email', email)
+
+      const updatedUser = await pb.collection('users').update(user.id, form)
+      setUser(updatedUser)
+      toast.success('Profile updated!')
+    } catch (error) {
+      toast.error('Unable to update profile')
+      setAvatar(getAvatarURL())
+    }
     
     setLoading(false)
   }
