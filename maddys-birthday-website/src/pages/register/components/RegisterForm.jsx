@@ -22,6 +22,10 @@ const RegisterForm = () => {
 
     try {
       await pb.collection('users').create(userData)
+      await pb
+      .collection('users')
+      .authWithPassword(e.target.email.value, e.target.password.value)
+      
       toast.success('Account created!')
       navigate('/contribute')
     } catch (error) {
