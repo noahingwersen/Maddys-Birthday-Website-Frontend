@@ -11,6 +11,9 @@ import ContributePage from './pages/contribute/ContributePage'
 import AboutPage from './pages/about/AboutPage'
 import ProfilePage from './pages/profile/ProfilePage'
 import NotFound from './components/NotFound'
+import FeedPage from './pages/feed/FeedPage'
+import Forbidden from './components/Forbidden'
+import SuperRoute from './utils/SuperRoute'
 
 function App() {
   return (
@@ -19,7 +22,8 @@ function App() {
         <div className="flex flex-col h-full">
           <Navbar />
           <Routes>
-            <Route element={<NotFound />} path="*"/>
+            <Route element={<NotFound />} path="*" />
+            <Route element={<Forbidden />} path="/denied" />
             <Route element={<HomePage />} path="/" exact />
             <Route element={<AboutPage />} path="/about" />
             <Route element={<RegisterPage />} path="/register" />
@@ -31,6 +35,10 @@ function App() {
             <Route
               element={<PrivateRoute children={<ProfilePage />} />}
               path="/profile"
+            />
+            <Route
+              element={<SuperRoute children={<FeedPage />} />}
+              path="/feed"
             />
           </Routes>
           <ToastContainer
