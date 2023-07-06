@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { pb } from '../api/pocketBase'
 
-function useApiData(collectionName) {
+function useApiData(collectionName, queryParams) {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState()
   const [errors, setErrors] = useState()
@@ -10,7 +10,7 @@ function useApiData(collectionName) {
     const fetchData = async () => {
       setLoading(true)
       try {
-        const response = await pb.collection(collectionName).getFullList()
+        const response = await pb.collection(collectionName).getFullList(queryParams)
         setData(response)
       } catch (error) {
         if (!error.isAbort) {

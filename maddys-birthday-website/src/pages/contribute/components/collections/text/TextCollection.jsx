@@ -4,9 +4,11 @@ import useApiData from '../../../../../hooks/useApiData'
 import { toast } from 'react-toastify'
 import PlusButton from '../../../../../components/PlusButton'
 import { pb } from '../../../../../api/pocketBase'
+import useAuth from '../../../../../hooks/useAuth'
 
 const TextCollection = ({ collection }) => {
-  const [loading, data, errors] = useApiData(collection.name)
+  const { user } = useAuth()
+  const [loading, data, errors] = useApiData(collection.name, {filter: `user='${user.id}'`})
   const [allItems, setAllItems] = useState([])
   const [updatedItems, setUpdatedItems] = useState([])
   const [checkedItems, setCheckedItems] = useState([])

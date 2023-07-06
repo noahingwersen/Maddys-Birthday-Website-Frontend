@@ -4,9 +4,11 @@ import { toast } from 'react-toastify'
 import { pb } from '../../../../../api/pocketBase'
 import ImageTable from './ImageTable'
 import ImageUpload from '../../../../../components/ImageUpload'
+import useAuth from '../../../../../hooks/useAuth'
 
 const ImageCollection = ({ collection }) => {
-  const [loading, data, errors] = useApiData(collection.name)
+  const { user } = useAuth()
+  const [loading, data, errors] = useApiData(collection.name, {filter: `user='${user.id}'`})
   const [allItems, setAllItems] = useState([])
 
   const uploadImage = async (file) => {
@@ -18,7 +20,7 @@ const ImageCollection = ({ collection }) => {
       await pb.collection(collection.name).create(formData)
       toast.success('Image uploaded successfully!')
 
-      const newData = await pb.collection(collection.name).getFullList()
+      const newData = await pb.collection(collection.name).getFullList({filter: `user='${user.id}'`})
       setAllItems(newData)
     } catch (error) {
       toast.error('Unable to upload image')
