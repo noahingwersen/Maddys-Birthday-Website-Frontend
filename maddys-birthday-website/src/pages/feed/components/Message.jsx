@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { pb } from "../../../api/pocketBase"
 
 const Message = ({user, text, time}) => {
@@ -8,7 +7,7 @@ const Message = ({user, text, time}) => {
     
 
   return (
-    <div className="bg-gray-300 p-4 my-8 rounded-md flex flex-col min-w-[450px]">
+    <div className="bg-gray-300 p-4 my-8 rounded-md flex flex-col w-[450px] sm:w-full">
         <div className="flex flex-row mb-4">
             <img className="h-20 w-20 rounded-full object-cover me-4" src={userAvatar}/>
             <div className="flex flex-col">
