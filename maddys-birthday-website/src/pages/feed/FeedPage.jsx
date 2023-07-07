@@ -1,4 +1,5 @@
 import Feed from "./components/Feed"
+import FeedFooter from "./components/FeedFooter"
 import FeedHeader from "./components/FeedHeader"
 
 const FeedPage = () => {
@@ -6,7 +7,7 @@ const FeedPage = () => {
     <div className="h-full w-full flex flex-col items-center overflow-y-auto bg-gray-100 sm:bg-blue-400">
       <FeedHeader />
       <Feed />
-      <p className="my-5">No more posts to show</p>
+      <FeedFooter />
     </div>
   )
 }
