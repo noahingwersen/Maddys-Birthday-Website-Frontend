@@ -3,7 +3,7 @@ import FeedHeader from "./components/FeedHeader"
 
 const FeedPage = () => {
   return (
-    <div className="h-full w-full flex flex-col items-center">
+    <div className="h-full w-full flex flex-col items-center overflow-y-auto bg-blue-400">
       <FeedHeader />
       <Feed />
     </div>
