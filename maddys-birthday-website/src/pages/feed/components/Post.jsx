@@ -7,7 +7,7 @@ const Message = ({user, time, content}) => {
     
 
   return (
-    <div className="sm:bg-gray-300 flex flex-col max-w-[450px] p-4 border sm:border-none sm:my-8 sm:rounded-md sm:w-[450px] w-full">
+    <div className="sm:bg-gray-200 flex flex-col max-w-[450px] p-4 border sm:border-none sm:my-8 sm:rounded-md sm:w-[450px] w-full">
         <div className="flex flex-row mb-4">
             <img className="h-20 w-20 rounded-full object-cover me-4" src={userAvatar}/>
             <div className="flex flex-col">
