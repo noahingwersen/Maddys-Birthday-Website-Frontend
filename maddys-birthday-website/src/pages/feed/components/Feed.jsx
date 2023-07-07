@@ -1,6 +1,6 @@
 import useApiData from "../../../hooks/useApiData"
-import Message from "./Message"
-import Picture from "./Picture"
+import { pb } from "../../../api/pocketBase"
+import Post from "./Post"
 
 const Feed = () => {
     const [messagesLoading, messages, messageErrors] = useApiData('messages', {sort: 'user', expand: 'user'})
@@ -10,11 +10,13 @@ const Feed = () => {
   return (
     <div>
         {pictures && pictures.map((picture) => {
-          return <Picture key={picture.id} user={picture.expand.user} id={picture.id} collectionID={picture.collectionId} image={picture.image} time={new Date(picture.updated)}/>
+          const content = <img className="w-full object-contain" src={pb.getFileUrl(picture, picture.image)}/> 
+          return <Post key={picture.id} user={picture.expand.user} time={new Date(picture.updated)} content={content}/>
         })}
 
         {messages && messages.map((message) => {
-          return <Message key={message.id} user={message.expand.user} text={message.text} time={new Date(message.updated)}/>
+          const content = <p>{message.text}</p>
+          return <Post key={message.id} user={message.expand.user} time={new Date(message.updated)} content={content}/>
         })}
     </div>
   )
