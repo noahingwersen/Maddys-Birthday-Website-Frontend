@@ -21,7 +21,7 @@ const About = () => {
         <Link className="italic hover:underline" to="/contribute">
           Contribute
         </Link>{' '}
-        page. Here you can upload messages, pictures or videos that only Maddy
+        page. Here you can upload messages and pictures that only Maddy
         will see on her birthday
       </p>
       <p className="mb-3">
