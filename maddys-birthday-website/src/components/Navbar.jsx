@@ -4,7 +4,7 @@ import ProfileIcon from './ProfileIcon'
 import { useState } from 'react'
 
 const Navbar = () => {
-  const { loggedIn } = useAuth()
+  const { loggedIn, user } = useAuth()
   const [showMenu, setShowMenu] = useState(false)
 
   return (
@@ -53,14 +53,8 @@ const Navbar = () => {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
-              <img
-                className="block h-8 w-auto lg:hidden"
-                src="/cake.svg"
-              />
-              <img
-                className="hidden h-8 w-auto lg:block"
-                src="/cake.svg"
-              />
+              <img className="block h-8 w-auto lg:hidden" src="/cake.svg" />
+              <img className="hidden h-8 w-auto lg:block" src="/cake.svg" />
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
@@ -77,6 +71,15 @@ const Navbar = () => {
                 >
                   Contribute
                 </Link>
+
+                {user && user.super && (
+                  <Link
+                    to="/feed"
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                  >
+                    Feed
+                  </Link>
+                )}
 
                 <Link
                   to="/about"
@@ -128,6 +131,15 @@ const Navbar = () => {
           >
             Contribute
           </Link>
+
+          {user && user.super && (
+            <Link
+              to="/feed"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >
+              Feed
+            </Link>
+          )}
 
           <Link
             to="/about"
