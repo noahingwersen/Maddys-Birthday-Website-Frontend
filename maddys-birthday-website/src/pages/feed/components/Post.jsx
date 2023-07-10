@@ -1,6 +1,6 @@
 import { pb } from '../../../api/pocketBase'
 
-const Message = ({ user, time, content }) => {
+const Post = ({ user, time, content }) => {
   let userAvatar
   if (user.avatar) {
     userAvatar = pb.getFileUrl(user, user.avatar)
@@ -32,4 +32,4 @@ const Message = ({ user, time, content }) => {
     </div>
   )
 }
-export default Message
+export default Post
